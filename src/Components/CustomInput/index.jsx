@@ -5,13 +5,14 @@ const CustomInput = ({ addTodo }) => {
   const [text, setText] = useState("");
   const handleClick = () => {
     addTodo(text);
-    setText('')
-  }
+    setText("");
+  };
 
   return (
     <Row justify="center">
       <Col span={10}>
         <Input
+          onPressEnter={handleClick}
           placeholder="INPUT TASK"
           onChange={(e) => {
             setText(e.target.value);
