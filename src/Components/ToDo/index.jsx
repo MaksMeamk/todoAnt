@@ -25,6 +25,7 @@ const ToDo = ({ item, handleDelete, handleEdit, changeStatus }) => {
   } else {
     actions.push(<EditOutlined onClick={() => setIsEdit(!isEdit)} />);
   }
+  
 
   return (
     <List.Item actions={actions}>
@@ -39,7 +40,9 @@ const ToDo = ({ item, handleDelete, handleEdit, changeStatus }) => {
           />
         ) : (
           <Col span={5}>
-            <Checkbox onChange={(e) => changeStatus(item.id)}>
+            <Checkbox
+              onChange={(e) => changeStatus(item.id, e.target.checked)}              
+            >
               {item.status ? (
                 <span style={{ textDecoration: "line-through" }}>
                   {editText}

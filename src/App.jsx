@@ -14,7 +14,7 @@ const App = () => {
 
     notification.open({
       type: "success",
-      message: "Done",
+      message: "added successfully",
     });
     console.log(updatedTasks);
   };
@@ -33,15 +33,23 @@ const App = () => {
       content: "This is a success addition",
     });
   };
-  const changeStatus = (id) => {
-    const newTodos = todos.map((item) =>
-      item.id == id ? { ...item, status: !item.status } : item
-    );
-    setTodos(newTodos);
-    message.open({
-      type: "success",
-      content: "This is a success execution",
+  const changeStatus = (id, stat) => {
+    console.log(stat);
+    const newTodos = todos.map((item) => {
+      /*if (!item.status) {
+        message.open({
+          type: "success",
+          content: "This is a success execution",
+        });
+      }*/
+      return item.id === id ? { ...item, status: stat } : item;
     });
+    const sortnewTodos = [
+      ...newTodos.filter((item) => item.status === false),
+      ...newTodos.filter((item) => item.status === true),
+    ];
+    console.log(sortnewTodos);
+    setTodos(sortnewTodos);
   };
 
   return (
