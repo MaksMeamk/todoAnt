@@ -16,16 +16,14 @@ const App = () => {
       type: "success",
       message: "added successfully",
     });
-    console.log(updatedTasks);
   };
   const handleDelete = (id) => {
     const newTodos = todos.filter((item) => item.id !== id);
     setTodos(newTodos);
-    console.log(newTodos);
   };
   const handleEdit = (id, text) => {
     const newTodos = todos.map((item) =>
-      item.id == id ? { ...item, title: text } : item
+      item.id === id ? { ...item, title: text } : item
     );
     setTodos(newTodos);
     message.open({
@@ -33,30 +31,37 @@ const App = () => {
       content: "This is a success addition",
     });
   };
+
   const changeStatus = (id, stat) => {
-    console.log(stat);
-    const newTodos = todos.map((item) => {
-      /*if (!item.status) {
-        message.open({
-          type: "success",
-          content: "This is a success execution",
-        });
-      }*/
-      return item.id === id ? { ...item, status: stat } : item;
-    });
+    const newTodos = todos.map((item) =>
+      item.id === id ? { ...item, status: stat } : item
+    );
     const sortnewTodos = [
       ...newTodos.filter((item) => item.status === false),
       ...newTodos.filter((item) => item.status === true),
     ];
-    console.log(sortnewTodos);
     setTodos(sortnewTodos);
+    stat
+      ? message.success({ content: "Task completed" })
+      : message.warning({ content: "Cancel a task" });
   };
+
+  let leftTasks = todos.filter((item) => item.status === false).length;
+  let readyTasks = todos.filter((item) => item.status === true).length;
 
   return (
     <div className="App">
       <Row justify="center">
         <Col>
-          <h1>What's the plan for today. Tasks: {todos.length}</h1>
+          <h1>What's the plan for today.</h1>
+          <h2>
+            Total Tasks:{todos.length}{" "}
+            <span style={{ color: "red" }}>Tasks left:{leftTasks}</span>{" "}
+            <span style={{ color: "green" }}>
+              Tasks ready:
+              {readyTasks}
+            </span>
+          </h2>
         </Col>
       </Row>
       <CustomInput addTodo={addTodo} />
