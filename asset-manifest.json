@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todoAnt/static/css/main.e6c13ad2.css",
+    "main.js": "/todoAnt/static/js/main.d5c2b543.js",
+    "index.html": "/todoAnt/index.html",
+    "main.e6c13ad2.css.map": "/todoAnt/static/css/main.e6c13ad2.css.map",
+    "main.d5c2b543.js.map": "/todoAnt/static/js/main.d5c2b543.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d5c2b543.js"
+  ]
+}
